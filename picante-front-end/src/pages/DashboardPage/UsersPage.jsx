@@ -255,7 +255,7 @@ const UsersPage = () => {
               </Grid>
               <Grid item xs={12} sm={4}>
                 {iconField(<WcIcon />, (
-                  <FormControl sx={{ width: 224 }}>
+                  <FormControl fullWidth>
                     <InputLabel id="gender-label">Gender</InputLabel>
                     <Select
                       labelId="gender-label"
