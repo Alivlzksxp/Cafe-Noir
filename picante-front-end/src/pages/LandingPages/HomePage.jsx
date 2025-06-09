@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../../styles/HomePage.css';
+import './HomePage.css';
 
 // Image assets
 import coffeeBg from '../../assets/coffee.jpg';
