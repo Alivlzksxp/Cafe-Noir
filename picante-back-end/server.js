@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const cors = require('cors');
+const cors = require('cors');  // only once here
 const path = require('path');
 
 const connectDB = require('./config/db');
@@ -19,22 +19,34 @@ app.use(express.urlencoded({ extended: true }));
 // CORS setup - only allow your frontend domain
 const allowedOrigins = ['https://cafe-noir.onrender.com'];
 
-app.use(cors());
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like curl, Postman, server-side requests)
+    if (!origin) return callback(null, true);
 
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 
 // API routes
 app.use('/api/users', userRoutes);
 app.use('/api/articles', articleRoutes);
 
-// Serve React frontend in production
-if (process.env.NODE_ENV === 'production') {
-  const root = path.join(__dirname, '../picante-front-end/dist');
-  app.use(express.static(root));
+// REMOVE React static file serving if frontend is deployed separately
+// if (process.env.NODE_ENV === 'production') {
+//   const root = path.join(__dirname, '../picante-front-end/dist');
+//   app.use(express.static(root));
 
-  app.get(/.*/, (req, res) => {
-    res.sendFile(path.join(root, 'index.html'));
-  });
-}
+//   app.get(/.*/, (req, res) => {
+//     res.sendFile(path.join(root, 'index.html'));
+//   });
+// }
 
 // Centralized error handler
 app.use((err, req, res, next) => {
