@@ -39,7 +39,7 @@ const ArticleListPage = () => {
             {articles.map(article => (
               <div className="article-card" key={article._id}>
                 <h3 className="article-title">{article.title}</h3>
-                <p className="article-subtext">Name: {article.name}</p>
+                <p className="article-subtext">{article.description}</p>
               </div>
             ))}
           </div>

@@ -11,8 +11,8 @@ const getArticles = async (req, res) => {
 
 const createArticle = async (req, res) => {
   try {
-    const { name, title, isActive } = req.body;
-    const article = await Article.create({ name, title, isActive });
+    const { title, description, isActive } = req.body;
+    const article = await Article.create({ title, description, isActive });
     res.status(201).json(article);
   } catch (err) {
     res.status(400).json({ message: err.message });

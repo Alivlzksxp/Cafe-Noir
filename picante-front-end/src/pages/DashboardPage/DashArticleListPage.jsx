@@ -25,7 +25,7 @@ const modalStyle = {
   transform: 'translate(-50%, -50%)',
   width: 500,
   bgcolor: 'background.paper',
-  border: '2px solid #8d6e63', 
+  border: '2px solid #8d6e63',
   boxShadow: 24,
   p: 4,
   borderRadius: 2
@@ -38,8 +38,8 @@ const DashArticleListPage = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [newArticle, setNewArticle] = useState({
-    name: '',
     title: '',
+    description: '',
     isActive: true,
   });
 
@@ -61,7 +61,7 @@ const DashArticleListPage = () => {
 
   const handleOpen = () => {
     setIsEditing(false);
-    setNewArticle({ name: '', title: '', isActive: true });
+    setNewArticle({ title: '', description: '', isActive: true });
     setOpen(true);
   };
 
@@ -74,7 +74,7 @@ const DashArticleListPage = () => {
   const handleEdit = id => {
     const art = articles.find(a => a._id === id);
     if (art) {
-      setNewArticle({ name: art.name, title: art.title, isActive: art.isActive });
+      setNewArticle({ title: art.title, description: art.description, isActive: art.isActive });
       setEditArticleId(id);
       setIsEditing(true);
       setOpen(true);
@@ -112,8 +112,8 @@ const DashArticleListPage = () => {
   };
 
   const columns = [
-    { field: 'name', headerName: 'Description', flex: 1 },
     { field: 'title', headerName: 'Title', flex: 1 },
+    { field: 'description', headerName: 'Description', flex: 1 },
     {
       field: 'isActive',
       headerName: 'Active',
@@ -123,14 +123,12 @@ const DashArticleListPage = () => {
           checked={params.row.isActive}
           onChange={() => handleToggle(params.row._id, params.row.isActive)}
           sx={{
-            '& .MuiSwitch-switchBase.Mui-checked': {
-              color: '#8d6e63', 
-            },
+            '& .MuiSwitch-switchBase.Mui-checked': { color: '#8d6e63' },
             '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
-              backgroundColor: '#bcaaa4', 
+              backgroundColor: '#bcaaa4'
             },
             '& .MuiSwitch-track': {
-              backgroundColor: '#d7ccc8',
+              backgroundColor: '#d7ccc8'
             }
           }}
         />
@@ -159,7 +157,7 @@ const DashArticleListPage = () => {
               borderColor: '#6d4c41',
               '&:hover': {
                 borderColor: '#5d4037',
-                backgroundColor: '#efebe9',
+                backgroundColor: '#efebe9'
               }
             }}
           >
@@ -174,11 +172,7 @@ const DashArticleListPage = () => {
     <>
       <Stack
         direction="row"
-        sx={{
-          mb: 4,
-          justifyContent: 'space-between',
-          alignItems: 'center'
-        }}
+        sx={{ mb: 4, justifyContent: 'space-between', alignItems: 'center' }}
       >
         <Typography variant="h3" fontWeight="bold">
           Articles
@@ -200,21 +194,23 @@ const DashArticleListPage = () => {
           </Typography>
           <TextField
             fullWidth
-            label="Name"
-            variant="standard"
-            value={newArticle.name}
-            onChange={e =>
-              setNewArticle({ ...newArticle, name: e.target.value })
-            }
-            sx={{ mb: 2 }}
-          />
-          <TextField
-            fullWidth
             label="Title"
             variant="standard"
             value={newArticle.title}
             onChange={e =>
               setNewArticle({ ...newArticle, title: e.target.value })
+            }
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            fullWidth
+            label="Description"
+            variant="standard"
+            multiline
+            rows={4}
+            value={newArticle.description}
+            onChange={e =>
+              setNewArticle({ ...newArticle, description: e.target.value })
             }
             sx={{ mb: 2 }}
           />
@@ -227,13 +223,13 @@ const DashArticleListPage = () => {
                 }
                 sx={{
                   '& .MuiSwitch-switchBase.Mui-checked': {
-                    color: '#8d6e63',
+                    color: '#8d6e63'
                   },
                   '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
-                    backgroundColor: '#bcaaa4',
+                    backgroundColor: '#bcaaa4'
                   },
                   '& .MuiSwitch-track': {
-                    backgroundColor: '#d7ccc8',
+                    backgroundColor: '#d7ccc8'
                   }
                 }}
               />
@@ -242,7 +238,9 @@ const DashArticleListPage = () => {
             sx={{ mb: 3 }}
           />
           <Stack direction="row" spacing={2} justifyContent="flex-end">
-            <Button variant="outlined" onClick={handleClose}
+            <Button
+              variant="outlined"
+              onClick={handleClose}
               sx={{
                 color: '#6d4c41',
                 borderColor: '#6d4c41',
@@ -254,7 +252,9 @@ const DashArticleListPage = () => {
             >
               Cancel
             </Button>
-            <Button variant="contained" onClick={handleSave}
+            <Button
+              variant="contained"
+              onClick={handleSave}
               sx={{ bgcolor: '#6d4c41', '&:hover': { bgcolor: '#5d4037' } }}
             >
               {isEditing ? 'Save' : 'Create'}
