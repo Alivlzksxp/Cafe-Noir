@@ -1,0 +1,72 @@
+.dashboard-layout-container {
+  display: flex;
+  height: 100vh;
+}
+
+.dashboard-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+}
+
+.dashboard-sidebar .MuiDrawer-paper {
+  width: 240px;
+  box-sizing: border-box;
+}
+
+.dashboard-main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-top-header {
+  background-color: #6d4c41 !important;
+  z-index: 1301;
+}
+
+.dashboard-header-toolbar {
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.dashboard-header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-right: 20px;
+}
+
+.dashboard-search-container {
+  position: relative;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  max-width: 200px;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.dashboard-search-container:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.dashboard-search-input {
+  color: inherit;
+  width: 100%;
+}
+
+.dashboard-page-outlet {
+  flex-grow: 1;
+  padding: 24px;
+  overflow: auto;
+}
+
+.dashboard-sidebar.collapsed .MuiListItemText-root {
+  display: none;
+}
+
+.dashboard-sidebar .MuiListItemButton-root {
+  transition: justify-content 0.3s;
+}

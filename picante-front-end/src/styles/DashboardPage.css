@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #fff;
+  }
+  
+  /* Dashboard Section */
+  .dashboard-page {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .dashboard-header .MuiTypography-h4 {
+    color: #1e2a38;
+    font-weight: 600;
+  }
+  
+  .dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 24px;
+  }
+  .stat-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .stat-card:hover {
+    transform: translateY(-4px);
+  }
+  .stat-card .MuiTypography-subtitle1 {
+    color: #6c757d;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .stat-card .MuiTypography-h5 {
+    color: #1976d2;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  
+  /* Charts Section */
+  .dashboard-charts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .chart-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  .chart-card .MuiTypography-h6 {
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #1e2a38;
+  }
+  
+  /* Users Table Section */
+  .dashboard-users {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .dashboard-users .MuiTypography-h6 {
+    font-weight: 600;
+    color: #1e2a38;
+  }
+  .users-table {
+    width: 100%;
+    height: 400px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 12px;
+  }
+  
+  /* Reports Page */
+  .reports-page {
+    padding: 24px;
+  }
+  .reports-page .MuiTypography-h4 {
+    color: #1e2a38;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .reports-page .MuiGrid-root {
+    gap: 24px;
+  }
+  .reports-page .MuiPaper-root {
+    padding: 16px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;
+  }
+  .reports-page .MuiTypography-h6 {
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #1e2a38;
+  }
+  
+  /* Users Page */
+  .users-page {
+    padding: 24px;
+  }
+  .users-page .MuiTypography-h4 {
+    font-weight: 600;
+    color: #1e2a38;
+    margin-bottom: 16px;
+  }
+  .users-page .MuiPaper-root {
+    border-radius: 12px !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;
+  }
+  .users-page .MuiDataGrid-root {
+    border: none;
+  }
+  .users-page .MuiDataGrid-cell {
+    border-bottom: 1px solid #fff;
+  }
+  .users-page .MuiDataGrid-columnHeaders {
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #fff;
+  }
+  
